@@ -3,13 +3,13 @@ import string
 import tkinter as tk
 
 #this allows us to copy the text to the system clipboard
-def copy_to_clipboard(text):
-    root = tk.Tk()
-    root.withdraw()          # Hide the window
+root = tk.Tk()
+root.withdraw()
+
+def copy_to_clipboard(password):
     root.clipboard_clear()
-    root.clipboard_append(text)
-    root.update()            # Keeps clipboard after window closes
-    root.destroy()
+    root.clipboard_append(password)
+    root.update()  # now it stays on the clipboard after the window is closed
     
 def generate_password(length, use_lower, use_upper, use_numbers, use_special):
     character_pool = ""
@@ -80,6 +80,7 @@ while True:
 
         if accept in ("y", "yes"):
             copy_to_clipboard(password)
-            print("Password copied to the clipboard.")
-            print("Remember to save your password in your password manager.")
-            exit()
+            print("\nPassword copied to clipboard.")
+            input("Clipboard updated. Press Enter to exit...")
+        break
+    break
